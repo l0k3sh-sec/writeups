@@ -4,10 +4,10 @@ All labs I've completed across various platforms.
 
 ---
 
-## 🔐 Access Control
+## 🔐 SSRF
 | Lab | Platform | Difficulty | Writeup |
 |-----|----------|------------|---------|
-| Horizontal privilege escalation | PortSwigger | Apprentice | [→](bac-horizontal/) |
+| Basic SSRF against the local server | PortSwigger | Apprentice | [→](ssrf-against-local-server/) |
 
 ## 📁 Path Traversal
 | Lab | Platform | Difficulty | Writeup |
