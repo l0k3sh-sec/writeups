@@ -1,4 +1,4 @@
 name: Remote Code Execution Via Web Shell Upload
 platform: PortSwigger
 difficulty: Apprentice
-category: Uncategorized
+category: File Upload Vulnerability
