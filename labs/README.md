@@ -1,6 +1,6 @@
 # Lab Writeups Index
 
-All labs I've completed across various platforms.
+Labs I found worth documenting
 
 ---
 
