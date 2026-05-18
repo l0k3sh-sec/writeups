@@ -1,0 +1,23 @@
+name: Auto Create meta.yml
+
+on:
+  push:
+    paths:
+      - 'labs/**'
+
+jobs:
+  create-meta:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Auto create meta.yml for new labs
+        run: python .github/scripts/create_meta.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add labs/**/meta.yml
+          git diff --cached --quiet || git commit -m "auto: create meta.yml for new lab"
+          git push
