@@ -1,0 +1,4 @@
+name: Basic SSRF Against the Local Server
+platform: PortSwigger
+difficulty: Apprentice
+category: SSRF
