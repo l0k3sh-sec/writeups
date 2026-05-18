@@ -1,0 +1,4 @@
+name: SSRF Against Another Backend System
+platform: PortSwigger
+difficulty: Apprentice
+category: SSRF
