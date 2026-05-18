@@ -5,11 +5,17 @@ on:
     paths:
       - 'labs/**'
 
+concurrency:
+  group: lab-automation
+  cancel-in-progress: false
+
 jobs:
   create-meta:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: main
 
       - name: Auto create meta.yml for new labs
         run: python .github/scripts/create_meta.py
@@ -18,7 +24,7 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git pull --rebase
+          git pull --rebase origin main
           git add labs/
           git diff --cached --quiet || git commit -m "auto: create meta.yml for new lab"
           git push
