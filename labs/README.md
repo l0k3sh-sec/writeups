@@ -1,6 +1,7 @@
 # Lab Writeups Index
 
-Labs I found worth documenting.
+All labs I've completed across various platforms.
+
 ---
 
 ## File Upload Vulnerability
