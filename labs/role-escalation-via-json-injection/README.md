@@ -4,7 +4,14 @@
 
 The goal was to modify my account's `roleid` to `2` to gain access to the admin panel and delete the user `carlos`.
 
-Logged in with `wiener:peter` and navigated to the account page. Captured the `POST /my-account/change-email` request in Burp Suite and sent it to Repeater. The request body was JSON — added `"roleid": 2` directly into the JSON body alongside the email parameter:
+
+
+Logged in with `wiener:peter` and navigated to the account page. Captured the `POST /my-account/change-email` request in Burp Suite and sent it to Repeater.
+originally:
+<img width="1599" height="776" alt="image" src="https://github.com/user-attachments/assets/3e9b71d0-1d6a-413b-92b6-d71d5805a592" />
+
+
+The request body was JSON — added `"roleid": 2` directly into the JSON body alongside the email parameter:
 
 ```json
 {"email": "wiener1@normal-user.net", "roleid": 2}
@@ -20,6 +27,7 @@ Server responded with the updated account object confirming the role change:
   "roleid": 2
 }
 ```
+<img width="1602" height="778" alt="image" src="https://github.com/user-attachments/assets/d72a3c8d-a2d0-4042-b9be-7afcb898e6cf" />
 
 Navigated to `/admin`, deleted `carlos` — lab solved.
 
