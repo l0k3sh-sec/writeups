@@ -33,5 +33,7 @@ Navigated to `/admin`, deleted `carlos` — lab solved.
 
 **Key takeaway:** The server accepted additional parameters in the JSON body without any server-side validation, allowing a regular user to escalate privileges just by injecting `"roleid": 2` into an existing request.
 Result: Regular user account was escalated to admin role. Admin panel became accessible and user carlos was deleted successfully.
+
 Impact: Any authenticated user can escalate privileges to administrator level by injecting the roleid field into the change-email request body. Full admin panel access is achieved.
+
 Mitigation: Server should whitelist accepted JSON fields and ignore or reject any unrecognized parameters. Role assignment should never be controlled by user-supplied input.
