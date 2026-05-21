@@ -23,5 +23,11 @@ All labs I've completed across various platforms.
 | SSRF Against Another Backend System | PortSwigger | Apprentice | [→](ssrf-against-another-backend-system/) |
 | Basic SSRF Against the Local Server | PortSwigger | Apprentice | [→](ssrf-against-local-server/) |
 
+## Uncategorized
+
+| Lab | Platform | Difficulty | Writeup |
+|-----|----------|------------|---------|
+| Role Escalation Via Json Injection | PortSwigger | Apprentice | [→](role-escalation-via-json-injection/) |
+
 ---
 *updated as I complete labs*
