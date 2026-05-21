@@ -1,28 +1,26 @@
-Vulnerability: User role can be modified via JSON body parameter injection in the change-email endpoint. The server accepts and processes unvalidated fields in the request body, allowing a low-privilege user to escalate their role to admin.
-Steps to Reproduce:
+# Lab: User Role Can Be Modified in User Profile
 
-Log in as a regular user (wiener:peter)
-Navigate to account settings and trigger a change-email request
-Intercept the POST request to /my-account/change-email in Burp Suite
-The original request body:
+**Difficulty:** Apprentice | **Category:** Access Control
 
-`json{"email":"wiener1@normal-user.net"}`
+The goal was to modify my account's `roleid` to `2` to gain access to the admin panel and delete the user `carlos`.
 
-Add roleid as an integer field to the JSON body:
+Logged in with `wiener:peter` and navigated to the account page. Captured the `POST /my-account/change-email` request in Burp Suite and sent it to Repeater. The request body was JSON — added `"roleid": 2` directly into the JSON body alongside the email parameter:
 
-`json{
+```json
+{"email": "wiener1@normal-user.net", "roleid": 2}
+```
+
+Server responded with the updated account object confirming the role change:
+
+```json
+{
+  "username": "wiener",
   "email": "wiener1@normal-user.net",
+  "apikey": "W36hgDTtPG9fEnkpRM9KeXX8ENgrFjGH",
   "roleid": 2
-}`
+}
+```
 
-Forward the request
-Navigate to /admin — admin access is now granted
-Send the following request to delete carlos:
+Navigated to `/admin`, deleted `carlos` — lab solved.
 
-`GET /admin/delete?username=carlos HTTP/2`
-Result: Regular user account was escalated to admin role. Admin panel became accessible and user carlos was deleted successfully.
-
-Impact: Any authenticated user can escalate privileges to administrator level by injecting the roleid field into the change-email request body. Full admin panel access is achieved.
-
-
-Mitigation: Server should whitelist accepted JSON fields and ignore or reject any unrecognized parameters. Role assignment should never be controlled by user-supplied input.
+**Key takeaway:** The server accepted additional parameters in the JSON body without any server-side validation, allowing a regular user to escalate privileges just by injecting `"roleid": 2` into an existing request.
