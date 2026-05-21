@@ -1,4 +1,4 @@
 name: Role Escalation Via Json Injection
 platform: PortSwigger
 difficulty: Apprentice
-category: Uncategorized
+category: Access-Control
