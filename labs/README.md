@@ -34,6 +34,7 @@ All labs I've completed across various platforms.
 | Lab | Platform | Difficulty | Writeup |
 |-----|----------|------------|---------|
 | Labs | PortSwigger | Apprentice | [→](labs/) |
+| X Original Url Header Bypass | PortSwigger | Apprentice | [→](x-original-url-header-bypass/) |
 
 ---
 *updated as I complete labs*
