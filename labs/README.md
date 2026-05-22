@@ -10,6 +10,7 @@ All labs I've completed across various platforms.
 |-----|----------|------------|---------|
 | Role Escalation Via Json Injection | PortSwigger | Apprentice | [→](role-escalation-via-json-injection/) |
 | X Original Url Header Bypass | PortSwigger | Apprentice | [→](x-original-url-header-bypass/) |
+| X Original Url Header Bypass 2 | PortSwigger | Apprentice | [→](x-original-url-header-bypass-2/) |
 
 ## File Upload Vulnerability
 
@@ -35,7 +36,6 @@ All labs I've completed across various platforms.
 | Lab | Platform | Difficulty | Writeup |
 |-----|----------|------------|---------|
 | X Original Url Bypass | PortSwigger | Apprentice | [→](x-original-url-bypass/) |
-| X Original Url Header Bypass 2 | PortSwigger | Apprentice | [→](x-original-url-header-bypass-2/) |
 
 ---
 *updated as I complete labs*
