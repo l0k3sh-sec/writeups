@@ -20,7 +20,8 @@ X-Original-URL: /admin
 
 The server returned the admin panel response, which included this in the HTML:
 
-![image.png](attachment:13fad131-ecd5-411a-94bc-e5f7122a14c0:image.png)
+<img width="1558" height="668" alt="Screenshot 2026-05-22 170558" src="https://github.com/user-attachments/assets/57e9a01c-d3e5-441a-8a79-708824d056b2" />
+
 
 ```html
 
@@ -40,7 +41,8 @@ X-Original-URL: /admin/delete
 
 ```
 
-![image.png](attachment:13fad131-ecd5-411a-94bc-e5f7122a14c0:image.png)
+<img width="1572" height="714" alt="Screenshot 2026-05-22 170711" src="https://github.com/user-attachments/assets/30c710de-6f81-4fce-98fa-4038de2d25f2" />
+
 
 The frontend saw `GET /` — a normal request — and allowed it through. The backend routed to `/admin/delete` via the custom header and picked up `?username=carlos` from the request line. Carlos was deleted — lab solved.
 
