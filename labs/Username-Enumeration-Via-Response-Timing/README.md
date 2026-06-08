@@ -39,6 +39,8 @@ This confirmed the server only hashes and checks the password if the username ex
 ### Step 2: Discovering and Bypassing the IP Block
 
 During manual testing, the server started rejecting requests instantly, returning a message about being blocked. Research indicated this is a standard IP-based block after repeated failed attempts.
+<img width="1919" height="1078" alt="image" src="https://github.com/user-attachments/assets/bf682826-0d9a-4492-b820-57275d128fad" />
+
 
 * **The Bypass:** I added the `X-Forwarded-For` header to trick the server into thinking the request originated from a different client.
 ```http
@@ -56,8 +58,12 @@ To find the valid target username, I sent the request to Intruder and configured
 * **Payload 1 (IP Spoofing):** Placed a marker in the `X-Forwarded-For` header (`192.168.0.§1§`) and used a Numbers payload (1–103).
 * **Payload 2 (Username):** Placed a marker on the username parameter (`username=§peter§`) and loaded the provided wordlist.
 * **Body:** Hardcoded the massive password to guarantee a high response time on a hit.
+  <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/7d421fd7-2cb1-47da-9838-b7f3a423ed24" />
+
 
 > **Crucial Setting:** I enabled the *Response Completed* column in Intruder (via the 3-dot menu) and restricted the attack to **1 concurrent thread** to prevent network jitter from skewing the timing data.
+<img width="1919" height="1077" alt="image" src="https://github.com/user-attachments/assets/41f48d93-4864-471a-9940-e19149198a3c" />
+
 
 **Result:** The username `azureuser` returned a response time of ~884ms, drastically higher than the rest. I verified this manually in Repeater with a fresh IP, confirming it was the valid target.
 
@@ -70,6 +76,8 @@ With the username confirmed, I set up a second Pitchfork attack to find the pass
 * **Body:** `username=azureuser&password=§peter§`
 
 **Result:** The payload `pepper` returned a `302 Found` status code, indicating a successful login redirect.
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/60df6e35-b5e9-416a-9a48-b11fea169c44" />
+
 
 ### Step 5: Final Execution & Login
 
