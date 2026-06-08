@@ -1,4 +1,4 @@
 name: Username Enumeration Via Account Lock
 platform: PortSwigger
-difficulty: Apprentice
-category: Uncategorized
+difficulty: Practitioner
+category: Authentication
