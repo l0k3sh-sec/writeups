@@ -9,6 +9,7 @@ All labs I've completed across various platforms.
 | Lab | Platform | Difficulty | Writeup |
 |-----|----------|------------|---------|
 | Flawed Multi Step Process | PortSwigger | Practitioner | [→](Flawed-Multi-step-Process/) |
+| Method Based Access Control | PortSwigger | Practitioner | [→](Method-Based-Access-Control/) |
 | Referer Based Access Control | PortSwigger | Practitioner | [→](Referer-Based-Access-Control/) |
 | Role Escalation Via Json Injection | PortSwigger | Apprentice | [→](role-escalation-via-json-injection/) |
 | X Original Url Header Bypass | PortSwigger | Practitioner | [→](x-original-url-header-bypass/) |
@@ -31,12 +32,6 @@ All labs I've completed across various platforms.
 |-----|----------|------------|---------|
 | SSRF Against Another Backend System | PortSwigger | Apprentice | [→](ssrf-against-another-backend-system/) |
 | Basic SSRF Against the Local Server | PortSwigger | Apprentice | [→](ssrf-against-local-server/) |
-
-## Uncategorized
-
-| Lab | Platform | Difficulty | Writeup |
-|-----|----------|------------|---------|
-| Method Based Access Control | PortSwigger | Apprentice | [→](Method-Based-Access-Control/) |
 
 ---
 *updated as I complete labs*
