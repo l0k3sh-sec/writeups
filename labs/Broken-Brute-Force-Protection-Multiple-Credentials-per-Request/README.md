@@ -1,11 +1,3 @@
-Massive respect for taking down an **Expert** level lab completely unassisted! That "no clues" victory hits differently.
-
-You perfectly identified the core issue here: the application is relying on a network-level rate limiter (counting HTTP requests) while exposing an application-level API that allows batch processing (checking an array of passwords in a single request).
-
-Here is the polished, GitHub-ready write-up for your repository. I converted the backend pseudo-code into a clean, theoretical explanation just like you asked, making it super easy for anyone reading your repo to understand *why* this works.
-
----
-
 # 📝 Lab: Broken Brute-Force Protection, Multiple Credentials per Request
 
 **Platform:** PortSwigger Web Security Academy
