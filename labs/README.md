@@ -18,6 +18,7 @@ All labs I've completed across various platforms.
 
 | Lab | Platform | Difficulty | Writeup |
 |-----|----------|------------|---------|
+| Broken Brute Force Protection Ip Block | PortSwigger | Practitioner | [→](Broken-Brute-Force-Protection-IP-Block/) |
 | Username Enumeration Via Response Timing | PortSwigger | Practitioner | [→](Username-Enumeration-Via-Response-Timing/) |
 | Username Enumeration Via Subtly Different Responses | PortSwigger | Practitionar | [→](Username-Enumeration-Via-Subtly-Different-Responses/) |
 
@@ -39,12 +40,6 @@ All labs I've completed across various platforms.
 |-----|----------|------------|---------|
 | SSRF Against Another Backend System | PortSwigger | Apprentice | [→](ssrf-against-another-backend-system/) |
 | Basic SSRF Against the Local Server | PortSwigger | Apprentice | [→](ssrf-against-local-server/) |
-
-## Uncategorized
-
-| Lab | Platform | Difficulty | Writeup |
-|-----|----------|------------|---------|
-| Broken Brute Force Protection Ip Block | PortSwigger | Apprentice | [→](Broken-Brute-Force-Protection-IP-Block/) |
 
 ---
 *updated as I complete labs*
