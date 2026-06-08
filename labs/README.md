@@ -18,7 +18,6 @@ All labs I've completed across various platforms.
 
 | Lab | Platform | Difficulty | Writeup |
 |-----|----------|------------|---------|
-| Broken Brute Force Protection, Multiple Credentials Per Request | PortSwigger | Expert | [→](Broken Brute-Force Protection, Multiple Credentials per Request/) |
 | Broken Brute Force Protection Ip Block | PortSwigger | Practitioner | [→](Broken-Brute-Force-Protection-IP-Block/) |
 | Broken Brute Force Protection Multiple Credentials Per Request | PortSwigger | Expert | [→](Broken-Brute-Force-Protection-Multiple-Credentials-per-Request/) |
 | Username Enumeration Via Account Lock | PortSwigger | Practitioner | [→](Username-Enumeration-Via-Account-Lock/) |
