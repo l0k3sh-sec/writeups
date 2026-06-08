@@ -31,5 +31,11 @@ All labs I've completed across various platforms.
 | SSRF Against Another Backend System | PortSwigger | Apprentice | [→](ssrf-against-another-backend-system/) |
 | Basic SSRF Against the Local Server | PortSwigger | Apprentice | [→](ssrf-against-local-server/) |
 
+## Uncategorized
+
+| Lab | Platform | Difficulty | Writeup |
+|-----|----------|------------|---------|
+| Referer Based Access Control | PortSwigger | Apprentice | [→](Referer-Based-Access-Control/) |
+
 ---
 *updated as I complete labs*
