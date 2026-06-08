@@ -18,6 +18,7 @@ All labs I've completed across various platforms.
 
 | Lab | Platform | Difficulty | Writeup |
 |-----|----------|------------|---------|
+| Username Enumeration Via Response Timing | PortSwigger | Practitioner | [→](Username-Enumeration-Via-Response-Timing/) |
 | Username Enumeration Via Subtly Different Responses | PortSwigger | Practitionar | [→](Username-Enumeration-Via-Subtly-Different-Responses/) |
 
 ## File Upload Vulnerability
@@ -38,12 +39,6 @@ All labs I've completed across various platforms.
 |-----|----------|------------|---------|
 | SSRF Against Another Backend System | PortSwigger | Apprentice | [→](ssrf-against-another-backend-system/) |
 | Basic SSRF Against the Local Server | PortSwigger | Apprentice | [→](ssrf-against-local-server/) |
-
-## Uncategorized
-
-| Lab | Platform | Difficulty | Writeup |
-|-----|----------|------------|---------|
-| Username Enumeration Via Response Timing | PortSwigger | Apprentice | [→](Username-Enumeration-Via-Response-Timing/) |
 
 ---
 *updated as I complete labs*
