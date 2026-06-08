@@ -4,17 +4,12 @@ All labs I've completed across various platforms.
 
 ---
 
-## Access Control
-
-| Lab | Platform | Difficulty | Writeup |
-|-----|----------|------------|---------|
-| X Original Url Header Bypass | PortSwigger | Apprentice | [→](x-original-url-header-bypass/) |
-
 ## Access-Control
 
 | Lab | Platform | Difficulty | Writeup |
 |-----|----------|------------|---------|
 | Role Escalation Via Json Injection | PortSwigger | Apprentice | [→](role-escalation-via-json-injection/) |
+| X Original Url Header Bypass | PortSwigger | Apprentice | [→](x-original-url-header-bypass/) |
 
 ## File Upload Vulnerability
 
