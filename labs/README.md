@@ -10,7 +10,7 @@ All labs I've completed across various platforms.
 |-----|----------|------------|---------|
 | Flawed Multi Step Process | PortSwigger | Practitioner | [→](Flawed-Multi-step-Process/) |
 | Role Escalation Via Json Injection | PortSwigger | Apprentice | [→](role-escalation-via-json-injection/) |
-| X Original Url Header Bypass | PortSwigger | Apprentice | [→](x-original-url-header-bypass/) |
+| X Original Url Header Bypass | PortSwigger | Practitioner | [→](x-original-url-header-bypass/) |
 
 ## File Upload Vulnerability
 
