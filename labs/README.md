@@ -30,5 +30,11 @@ All labs I've completed across various platforms.
 | SSRF Against Another Backend System | PortSwigger | Apprentice | [→](ssrf-against-another-backend-system/) |
 | Basic SSRF Against the Local Server | PortSwigger | Apprentice | [→](ssrf-against-local-server/) |
 
+## Uncategorized
+
+| Lab | Platform | Difficulty | Writeup |
+|-----|----------|------------|---------|
+| X Original Url Header Bypass | PortSwigger | Apprentice | [→](x-original-url-header-bypass/) |
+
 ---
 *updated as I complete labs*
