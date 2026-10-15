@@ -1,8 +1,9 @@
 # CTF Writeup: Credential Stuffing
-**Platform:** CyLab / picoCTF 2026[cite: 1]
-**Difficulty:** Medium[cite: 1]
-**Category:** Web Exploitation[cite: 1]
-**Vulnerability/Concept:** Credential Stuffing & Custom TCP Sockets
+
+* **Platform:** CyLab / picoCTF 2026
+* **Difficulty:** Medium
+* **Category:** Web Exploitation
+* **Vulnerability/Concept:** Credential Stuffing & Custom TCP Sockets
 
 The CTF provided a dump of **1500 credentials** from a data breath, and a `netcat` endpoint for a seperate "Online Banking Service" endpoint on raw `TCP` port.
 The idea is simple we have to reuse this provided data breached credentials in "Online Banking Service" in the hope that at least one person reused theirs.
