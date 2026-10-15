@@ -4,7 +4,10 @@
 The CTF provided a dump of 1500 credentials from a data breath, and a netcat endpoint for a seperate "Online Banking Service" endpoint on raw TCP port.
 The idea is simple we have to reuse this provided data breached credentials in "Online Banking Service" in the hope that at least one person reused theirs.
 The First thing that stood out was CTF didn't provided a normal website instead they provided a netcat endpoint. Upon connecting it showed a plain text prompt asking for a Username and Password
+
+
 <img width="702" height="296" alt="image" src="https://github.com/user-attachments/assets/4eabe66b-559d-4077-86cc-a67cf3b7a58a" />
+
 
 since it wasn't a website, it has no http structure, no header/status-line or anything a browser or a proxy like BurpSuite will recognise
 This server didn't speak HTTP at all. It was a custom application protocol invented by whoever wrote the challenge, just raw text sent and received over a TCP socket. 
