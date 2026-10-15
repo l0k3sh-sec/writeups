@@ -1,3 +1,6 @@
+
+
+
 The CTF provided a dump of 1500 credentials from a data breath, and a netcat endpoint for a seperate "Online Banking Service" endpoint on raw TCP port.
 The idea is simple we have to reuse this provided data breached credentials in "Online Banking Service" in the hope that at least one person reused theirs.
 The First thing that stood out was CTF didn't provided a normal website instead they provided a netcat endpoint. Upon connecting it showed a plain text prompt asking for a Username and Password
@@ -9,7 +12,7 @@ Only way to understand how it works was to watch what output it printed
 
 Since unlike normal website working at application layer, this server worked directly on transport layer so using BurpSuite as a proxy was out of question
 so i planned to write a login automation script from scratch using python's socket library which will perfectly work on transport layer
-My basic idea about writing script:
+**My basic idea about writing script:**
 since server was asking for Username and Password only
 i created a TCP connection, sending a Username followed by newline, sending password followed by new line, and reading back what server responded
 basically rebuilding by hand the behavior a browser and HTTP library normally provide automatically
@@ -20,8 +23,8 @@ The fix was to keep reading in a loop until the connection closed cleanly, since
 
 With correctness sorted out, speed became the next problem, since trying 1500 credential pairs one at a time sequentially was far too slow for the time limit. Running the login attempts concurrently with a small thread pool cut the total time down substantially, with a shared stop flag so that once a valid login was confirmed, the remaining in-flight attempts could stop early instead of continuing to burn through the rest of the list.
 
-FINAL SCRIPT:
-``
+**FINAL SCRIPT:**
+```
 import socket
 import concurrent.futures
 import threading
@@ -85,7 +88,7 @@ if "user" in result_holder:
     print(result_holder["text"])
 else:
     print("No confirmed hit found.")
-``
+```
 <img width="523" height="411" alt="image" src="https://github.com/user-attachments/assets/94bd1481-4a7b-4763-bbcf-5b2e0dae18c1" />
 
 The working credential pair turned out to be ehi:smack, and the server responded with an authentication success message followed by the flag: academy{d0nt_r3u5e_cr3d3nt1als_8fc01779}.
