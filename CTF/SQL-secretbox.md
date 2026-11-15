@@ -28,7 +28,9 @@ In response of this same request noticed that web-server uses stack "postgres/My
 
 Probed the `content` field with a single `'` (quote) as a fingerprint test. Logic: if the app safely parameterizes/escapes input, a stray quote gets neutralized and nothing breaks. If the app concatenates raw input into SQL, the quote "escapes the box" and corrupts the query grammar, resulting in conformation of SQL in usage.
 
-Sent `content='OR=1` → got a *`500 Internal Server Error`* , and the error page echoed the *entire* final SQL statement back, including the stack trace naming `pg-protocol` — confirming Postgres as the engine and confirming string-context injection. Including my `owner ID` (`96046b2e-791d-415f-a9f9-b8574f793432`)
+Sent `content='x` → got a *`500 Internal Server Error`* , and the error page echoed the *entire* final SQL statement back, including the stack trace naming `pg-protocol` — confirming Postgres as the engine and confirming string-context injection. Including my `owner ID` (`96046b2e-791d-415f-a9f9-b8574f793432`)
+<img width="1507" height="777" alt="image" src="https://github.com/user-attachments/assets/82e086d1-1257-4f96-a008-542653c63ffa" />
+
 
 ### Exploitation
 Upon confirming unsanitized input at `content` filed i wrote this SQL String
@@ -39,9 +41,12 @@ Upon confirming unsanitized input at `content` filed i wrote this SQL String
 
 ### How Payload Works
 To execute the attack, we inject a payload that breaks out of the original `INSERT` statement using `');`, executes an `UPDATE` command, and ends with a `--` comment to neutralize the application's residual closing characters and prevent a syntax error. The injected `UPDATE` successfully reassigns ownership of the admin's secret to our own `UUID`, satisfying the database's foreign-key constraints because our user actually exists. As a result, when we visit the homepage, the application's secure, parameterized `SELECT` query fetches and displays the flag for us, as our account is now its legitimate owner in the database. Note that this multi-statement injection (stacked queries) relies on the Postgres driver operating in "simple mode," which allows multiple semicolon-separated commands to run at once, rather than the stricter prepared statement mode.
+<img width="1357" height="488" alt="image" src="https://github.com/user-attachments/assets/91517253-b389-4add-8c2c-c8072ddb7c14" />
+
 
 ### Conclusion
 in reponse of using this payload in `content` field i got `302` means my payload worked and upon visiting the secret as a user i got to know secret of admin and solved the CTF.
+
 
 ### Flag
 `academy{sq1_1nject10n_a6e12f86}`
