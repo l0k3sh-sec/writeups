@@ -1,4 +1,9 @@
+# CTF Writeup: Secret Box
 
+* **Platform:** CyLab / picoCTF 2026
+* **Difficulty:** Medium
+* **Category:** Web Exploitation
+* **Vulnerability/Concept:** SQL Injection (stacked queries) → content hijack via UPDATE
 
 Read the provided source code and confirmed 
 - `app/src/server.js` — the `/secrets/create` handler builds its query with a raw template literal:
@@ -21,7 +26,9 @@ Sent `content='OR=1` → got a **500 Internal Server Error**, and the error page
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/929f3e64-ce3b-4cbb-b803-cef7f33a76fa" />
 
 Upon confirming unsanitized input at content filed i wrote this SQL String `'); UPDATE secrets SET owner_id='96046b2e-791d-415f-a9f9-b8574f793432' WHERE owner_id='e2a66f7d-2ce6-4861-b4aa-be8e069601cb'; --'` 
-How Payload works: To execute the attack, we inject a payload that breaks out of the original INSERT statement using ');, executes an UPDATE command, and ends with a -- comment to neutralize the application's residual closing characters and prevent a syntax error. The injected UPDATE successfully reassigns ownership of the admin's secret to our own UUID, satisfying the database's foreign-key constraints because our user actually exists. As a result, when we visit the homepage, the application's secure, parameterized SELECT query fetches and displays the flag for us, as our account is now its legitimate owner in the database. Note that this multi-statement injection (stacked queries) relies on the Postgres driver operating in "simple mode," which allows multiple semicolon-separated commands to run at once, rather than the stricter prepared statement mode.
+
+How Payload works: 
+To execute the attack, we inject a payload that breaks out of the original INSERT statement using ');, executes an UPDATE command, and ends with a -- comment to neutralize the application's residual closing characters and prevent a syntax error. The injected UPDATE successfully reassigns ownership of the admin's secret to our own UUID, satisfying the database's foreign-key constraints because our user actually exists. As a result, when we visit the homepage, the application's secure, parameterized SELECT query fetches and displays the flag for us, as our account is now its legitimate owner in the database. Note that this multi-statement injection (stacked queries) relies on the Postgres driver operating in "simple mode," which allows multiple semicolon-separated commands to run at once, rather than the stricter prepared statement mode.
 
 in reponse of using this payload in content field i got 302 means my payload worked and upon visiting the secret as a user i got to know secret of admin and solved the CTF.
 flag: `academy{sq1_1nject10n_a6e12f86}`
